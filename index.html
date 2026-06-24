@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Hostel Allocation System</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">H</div>
+        <div>
+          <strong>HostelX</strong>
+          <span>Student Hostel Allocation</span>
+        </div>
+      </div>
+      <nav class="nav-actions">
+        <div class="profile-chip hidden" id="profileChip">
+          <span class="profile-icon">👤</span>
+          <div>
+            <strong id="profileName">Guest</strong>
+            <small id="profileRole">Visitor</small>
+          </div>
+        </div>
+        <button class="nav-button" data-action="showSection" data-target="landing">Home</button>
+        <button class="nav-button" data-action="showSection" data-target="register">Register</button>
+        <button class="nav-button" data-action="showSection" data-target="login">Login</button>
+      </nav>
+    </header>
+
+    <main class="page-container">
+      <section id="landing" class="page active">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Welcome to the digital hostel experience</p>
+            <h1>Beautiful hostel allocation for every student.</h1>
+            <p class="hero-description">
+              Register, login, apply for a room, and monitor occupancy with a smart, intuitive student hostel system built for Netlify.
+            </p>
+            <div class="hero-actions">
+              <button class="primary-btn" data-action="showSection" data-target="register">Register Now</button>
+              <button class="secondary-btn" data-action="showSection" data-target="login">Login</button>
+            </div>
+          </div>
+          <div class="hero-cards">
+            <article class="feature-card feature-card-top">
+              <h2>Auto room allocation</h2>
+              <p>Instant assignment based on availability, gender fit and block preference.</p>
+            </article>
+            <article class="feature-card feature-card-middle">
+              <h2>Live occupancy</h2>
+              <p>Track room fills across halls, blocks and student status in real-time.</p>
+            </article>
+            <article class="feature-card feature-card-bottom">
+              <h2>Hostel reports</h2>
+              <p>Generate student and occupancy summaries with one click.</p>
+            </article>
+          </div>
+        </div>
+        <section class="overview-grid">
+          <article>
+            <h3>Student Registration</h3>
+            <p>New students can create an account and submit personal details instantly.</p>
+          </article>
+          <article>
+            <h3>Hostel Application</h3>
+            <p>Apply for a room from your dashboard, then let the system allocate you automatically.</p>
+          </article>
+          <article>
+            <h3>Management Tools</h3>
+            <p>Manager dashboard provides occupancy, reports, and full hostel oversight.</p>
+          </article>
+        </section>
+      </section>
+
+      <section id="register" class="page">
+        <div class="form-panel">
+          <div class="panel-heading">
+            <h2>Register as a new student</h2>
+            <p>Start your hostel application journey in seconds.</p>
+          </div>
+          <form id="registerForm" class="form-grid">
+            <label>
+              Full Name
+              <input type="text" name="name" required placeholder="Jane Doe" />
+            </label>
+            <label>
+              Matric Number
+              <input type="text" name="matric" required placeholder="STM/2026/001" />
+            </label>
+            <label>
+              Email Address
+              <input type="email" name="email" required placeholder="jane.doe@example.com" />
+            </label>
+            <label>
+              Department
+              <input type="text" name="department" required placeholder="Computer Science" />
+            </label>
+            <label>
+              Year of Study
+              <select name="year" required>
+                <option value="">Select year</option>
+                <option value="100">100 Level</option>
+                <option value="200">200 Level</option>
+                <option value="300">300 Level</option>
+                <option value="400">400 Level</option>
+                <option value="500">500 Level</option>
+              </select>
+            </label>
+            <label>
+              Gender
+              <select name="gender" required>
+                <option value="">Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" required placeholder="Choose a secure password" />
+            </label>
+            <button type="submit" class="primary-btn">Create Account</button>
+          </form>
+          <p class="form-note">Already registered? <button class="link-button" data-action="showSection" data-target="login">Login here</button></p>
+        </div>
+      </section>
+
+      <section id="login" class="page">
+        <div class="form-panel">
+          <div class="panel-heading">
+            <h2>Login to your hostel account</h2>
+            <p>Access student dashboard, manage applications and view allocation.</p>
+          </div>
+          <form id="loginForm" class="form-grid">
+            <label>
+              Matric Number or Email
+              <input type="text" name="identifier" required placeholder="STM/2026/001 or jane@example.com" />
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" required placeholder="Password" />
+            </label>
+            <button type="submit" class="primary-btn">Sign in</button>
+          </form>
+          <p class="form-note">Manager login? Use <strong>admin@hostel.com</strong> / <strong>Admin@123</strong>.</p>
+          <p class="form-note">Need an account? <button class="link-button" data-action="showSection" data-target="register">Register now</button></p>
+        </div>
+      </section>
+
+      <section id="studentDashboard" class="page dashboard-page">
+        <div class="dashboard-header">
+          <div>
+            <h2 id="dashboardTitle">Student Dashboard</h2>
+            <p id="dashboardSubtitle">Manage your hostel application and track allocation.</p>
+          </div>
+          <button class="ghost-btn" id="logoutButton">Logout</button>
+        </div>
+        <div class="dashboard-grid">
+          <article class="dashboard-card status-card">
+            <h3>Application Status</h3>
+            <p id="studentStatus">No hostel application submitted yet.</p>
+            <div id="allocationDetails" class="allocation-summary hidden"></div>
+          </article>
+          <article class="dashboard-card occupancy-card">
+            <h3>Current Hostel Occupancy</h3>
+            <div class="occupancy-list">
+              <div><span id="totalStudents">0</span><small>Registered students</small></div>
+              <div><span id="allocatedStudents">0</span><small>Allocated rooms</small></div>
+              <div><span id="vacantBeds">0</span><small>Vacant beds</small></div>
+            </div>
+            <button class="secondary-btn" id="studentReportButton">Generate Report</button>
+          </article>
+        </div>
+        <div class="form-panel application-panel">
+          <div class="panel-heading">
+            <h3>Hostel Application</h3>
+            <p>Submit your application and receive your room assignment automatically.</p>
+          </div>
+          <form id="applicationForm" class="form-grid">
+            <label>
+              Preferred Hostel
+              <select id="hostelSelect" name="preferredHostel" required>
+                <option value="">Select hostel</option>
+                <option value="Danfodio">Danfodio</option>
+                <option value="Dangote">Dangote</option>
+                <option value="Icsa">Icsa</option>
+                <option value="Ramat">Ramat</option>
+                <option value="Shehu Idris">Shehu Idris</option>
+                <option value="Akinzuwa">Akinzuwa</option>
+              </select>
+            </label>
+            <label>
+              Preferred Block
+              <select id="blockSelect" name="preferredBlock" required>
+                <option value="">Select preference</option>
+              </select>
+            </label>
+            <label>
+              Room Type
+              <select name="roomType" required>
+                <option value="">Select room type</option>
+                <option value="Standard">Standard</option>
+                <option value="Deluxe">Deluxe</option>
+              </select>
+            </label>
+            <label>
+              Arrival Term
+              <input type="text" name="term" required placeholder="2026/2027 Session" />
+            </label>
+            <label>
+              Special Notes
+              <textarea name="notes" placeholder="Any special request or accommodation needs"></textarea>
+            </label>
+            <button type="submit" class="primary-btn">Submit Application</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="adminDashboard" class="page dashboard-page">
+        <div class="dashboard-header">
+          <div>
+            <h2>Hostel Management</h2>
+            <p>Monitor occupancy, manage allocations and generate full reports.</p>
+          </div>
+          <button class="ghost-btn" id="logoutButtonAdmin">Logout</button>
+        </div>
+        <div class="dashboard-grid">
+          <article class="dashboard-card status-card">
+            <h3>Hostel Summary</h3>
+            <div class="occupancy-list">
+              <div><span id="adminTotalStudents">0</span><small>Students registered</small></div>
+              <div><span id="adminAllocated">0</span><small>Rooms allocated</small></div>
+              <div><span id="adminVacant">0</span><small>Vacant beds</small></div>
+            </div>
+          </article>
+          <article class="dashboard-card occupancy-card">
+            <h3>Live Block Monitoring</h3>
+            <div class="block-overview" id="blockOverview"></div>
+          </article>
+        </div>
+        <div class="table-panel">
+          <div class="panel-heading">
+            <h3>Student Allocations</h3>
+            <p>Review all allocations and check application details at a glance.</p>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Matric</th>
+                  <th>Department</th>
+                  <th>Status</th>
+                  <th>Room</th>
+                </tr>
+              </thead>
+              <tbody id="allocationTableBody"></tbody>
+            </table>
+          </div>
+          <div class="panel-actions">
+            <button class="secondary-btn" id="adminReportButton">Download Hostel Report</button>
+            <button class="ghost-btn" id="resetButton">Reset System</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="alertToast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
